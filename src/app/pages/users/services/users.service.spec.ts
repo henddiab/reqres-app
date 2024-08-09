@@ -9,7 +9,7 @@ import { userData } from '../interfaces/user.interface';
 import { usersList } from '../interfaces/usersList.interface';
 import { BehaviorSubject } from 'rxjs';
 
-fdescribe('UsersService', () => {
+describe('UsersService', () => {
   let service: UsersService;
   let httpMock: HttpTestingController;
 

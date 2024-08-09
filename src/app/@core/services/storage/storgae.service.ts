@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class StorageService {
-  private tokenName = 'token';
+  public tokenName = 'token';
 
   constructor() {}
 
