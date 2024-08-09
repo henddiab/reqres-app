@@ -13,7 +13,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let user of usersList" (click)="openUserView(user)">
+            <tr
+              *ngFor="let user of usersList; let i = index"
+              (click)="openUserView(user, i)"
+              [class.selected]="selectedRow === i"
+            >
               <td>
                 <div class="d-flex align-items-center">
                   <img [src]="user.avatar" alt="" />

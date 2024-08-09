@@ -86,12 +86,12 @@ export class AddEditModalComponent implements OnInit {
             id: this.user?.id,
           });
           this.toaster.success(
-            'User have been added successfully',
+            'User have been updated successfully',
             EToasterTypes.success
           );
         } else {
           this.toaster.error(
-            'an error occurred while adding user',
+            'an error occurred while update user',
             EToasterTypes.error
           );
         }
@@ -111,6 +111,7 @@ export class AddEditModalComponent implements OnInit {
           this.userService.emitUser({
             actionType: 'add',
             model: this.model,
+            response: res,
           });
           this.toaster.success(
             'User have been added successfully',

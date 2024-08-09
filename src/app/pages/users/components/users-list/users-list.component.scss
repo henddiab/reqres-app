@@ -82,7 +82,7 @@
       border-radius: 10px 0 0 10px;
       tbody {
         tr {
-          &:focus-within td {
+          &.selected td {
             background-color: $primary;
             span {
               color: $white;

@@ -19,6 +19,8 @@ export class UsersListComponent implements OnInit {
   isModalVisible: boolean = false;
   // holds the selected user data
   selectedUser: any;
+  // holds the selected row index
+  selectedRow: number = 0;
   // store all active subscriptions in the component
   public subscriptions: Subscription = new Subscription();
 
@@ -40,7 +42,8 @@ export class UsersListComponent implements OnInit {
    * open user view
    * @param user
    */
-  openUserView(user: any) {
+  openUserView(user: any, index: number) {
+    this.selectedRow = index;
     this.showUser = true;
     this.userID = user.id;
   }
@@ -79,12 +82,26 @@ export class UsersListComponent implements OnInit {
         if (data.actionType === 'save') {
           this.usersList = this.usersList.map((user) => {
             if (user.id === data.id) {
-              return { ...data.model };
+              //  return { ...data.model }; >> this is the original code but there is an issue with the api data & api return
+              return {
+                id: user.id,
+                first_name: data.model.name,
+                last_name: data.model.job,
+                email: user.email,
+                avatar: user.avatar,
+              };
             }
             return user;
           });
         } else if (data.actionType === 'add') {
-          this.usersList.unshift(data.model);
+          // this.usersList.unshift(data.model); >> this is the original code but there is an issue with the api data & api return
+          this.usersList.unshift({
+            id: data.response.id,
+            first_name: data.model.name,
+            last_name: data.model.job,
+            email: 'newUser@email.com',
+            avatar: 'https://via.placeholder.com/100x100.png',
+          });
         }
       }
     });

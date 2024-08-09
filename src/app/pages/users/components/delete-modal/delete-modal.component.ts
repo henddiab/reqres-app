@@ -45,12 +45,12 @@ export class DeleteModalComponent implements OnInit {
         if (res) {
           this.userDeleted.emit(this.user.id);
           this.toaster.success(
-            'User have been added successfully',
+            'User have been deleted successfully',
             EToasterTypes.success
           );
         } else {
           this.toaster.error(
-            'an error occurred while adding user',
+            'an error occurred while deleted user',
             EToasterTypes.error
           );
         }
