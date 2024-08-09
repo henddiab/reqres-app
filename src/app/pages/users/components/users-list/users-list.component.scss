@@ -6,6 +6,16 @@
     box-shadow: $box-shadow;
     margin: 2rem 0;
     padding: 1rem;
+    .loadMore {
+      text-align: center;
+      p {
+        color: $primary;
+        font-size: 0.8rem;
+      }
+      img {
+        margin-bottom: 0.8rem;
+      }
+    }
     thead th {
       padding: 0.5rem 2rem !important;
       background-color: transparent !important;

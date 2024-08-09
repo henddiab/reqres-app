@@ -16,8 +16,8 @@ export class UsersService {
   /**
    * @returns returns an Observable that emits Users List
    */
-  getUsersList() {
-    return this.http.get(APIURL.users.listUsers);
+  getUsersList(page: number) {
+    return this.http.get(`${APIURL.users.listUsers}?page=${page}`);
   }
 
   /**

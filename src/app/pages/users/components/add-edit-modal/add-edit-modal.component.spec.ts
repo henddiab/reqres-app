@@ -84,7 +84,7 @@ describe('AddEditModalComponent', () => {
         component.model
       );
       expect(mockToastrService.success).toHaveBeenCalledWith(
-        'User have been added successfully',
+        'User have been updated successfully',
         EToasterTypes.success
       );
       expect(component.closeModalButton.nativeElement.click).toHaveBeenCalled();
@@ -98,7 +98,7 @@ describe('AddEditModalComponent', () => {
 
       expect(mockUserService.updateUser).toHaveBeenCalled();
       expect(mockToastrService.error).toHaveBeenCalledWith(
-        'an error occurred while adding user',
+        'an error occurred while updating user',
         EToasterTypes.error
       );
       expect(component.closeModalButton.nativeElement.click).toHaveBeenCalled();

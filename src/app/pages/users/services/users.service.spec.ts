@@ -38,11 +38,11 @@ describe('UsersService', () => {
     ];
 
     const getUsersListSpy = spyOn(service, 'getUsersList').and.callThrough();
-    service.getUsersList().subscribe((users) => {
+    service.getUsersList(1).subscribe((users) => {
       expect(users).toEqual(mockUsersList);
     });
 
-    const req = httpMock.expectOne(APIURL.users.listUsers);
+    const req = httpMock.expectOne(`${APIURL.users.listUsers}?page=1`);
     req.flush(mockUsersList);
 
     expect(getUsersListSpy).toHaveBeenCalled();
@@ -55,11 +55,11 @@ describe('UsersService', () => {
     ];
 
     const getUsersListSpy = spyOn(service, 'getUsersList').and.callThrough();
-    service.getUsersList().subscribe((users) => {
+    service.getUsersList(1).subscribe((users) => {
       expect(users).toEqual(mockUsersList);
     });
 
-    const req = httpMock.expectOne(APIURL.users.listUsers);
+    const req = httpMock.expectOne(`${APIURL.users.listUsers}?page=1`);
     expect(req.request.method).toBe('GET');
     req.flush(mockUsersList);
 

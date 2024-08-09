@@ -56,6 +56,10 @@
             </tr>
           </tbody>
         </table>
+        <div class="loadMore" *ngIf="!loading">
+          <img src="assets/images/icons8-spinner_frame_1.svg" alt="" />
+          <p>Loading More Users</p>
+        </div>
       </div>
     </div>
     <!-- view of single selected user -->

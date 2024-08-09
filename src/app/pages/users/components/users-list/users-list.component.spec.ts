@@ -81,7 +81,7 @@ describe('UsersListComponent', () => {
   describe('openUserView', () => {
     it('should set showUser to true and userID correctly', () => {
       const user = { id: 1 };
-      component.openUserView(user);
+      component.openUserView(user, 0);
 
       expect(component.showUser).toBeTrue();
       expect(component.userID).toBe(user.id);
@@ -146,9 +146,9 @@ describe('UsersListComponent', () => {
     it('should update usersList on save action', () => {
       const updatedUser: usersList = {
         id: '1',
-        email: '',
         first_name: 'John',
         last_name: 'Doe',
+        email: '',
         avatar: 'https://example.com/avatar.jpg',
       };
       const user$ = of({ actionType: 'save', id: '1', model: updatedUser });
@@ -156,9 +156,9 @@ describe('UsersListComponent', () => {
       const initialUsers: usersList[] = [
         {
           id: '1',
-          email: '',
           first_name: 'John',
           last_name: 'Doe',
+          email: '',
           avatar: 'https://example.com/avatar.jpg',
         },
       ];
@@ -172,12 +172,16 @@ describe('UsersListComponent', () => {
     it('should add new user on add action', () => {
       const newUser: usersList = {
         id: '1',
-        email: '',
         first_name: 'John',
         last_name: 'Doe',
+        email: '',
         avatar: 'https://example.com/avatar.jpg',
       };
-      const user$ = of({ actionType: 'add', model: newUser });
+      const user$ = of({
+        actionType: 'add',
+        model: newUser,
+        response: { id: '1' },
+      });
       mockUserService.user$ = user$;
       component.usersList = [];
 

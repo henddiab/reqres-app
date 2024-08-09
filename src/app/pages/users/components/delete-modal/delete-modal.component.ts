@@ -50,7 +50,7 @@ export class DeleteModalComponent implements OnInit {
           );
         } else {
           this.toaster.error(
-            'an error occurred while deleted user',
+            'an error occurred while deleting user',
             EToasterTypes.error
           );
         }

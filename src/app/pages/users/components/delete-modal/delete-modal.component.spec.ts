@@ -56,7 +56,7 @@ describe('DeleteModalComponent', () => {
 
       expect(mockUserService.deleteUser).toHaveBeenCalledWith(mockUser.id);
       expect(mockToastrService.success).toHaveBeenCalledWith(
-        'User have been added successfully',
+        'User have been deleted successfully',
         EToasterTypes.success
       );
       expect(component.userDeleted.emit).toHaveBeenCalledWith(mockUser.id);
@@ -75,7 +75,7 @@ describe('DeleteModalComponent', () => {
 
       expect(mockUserService.deleteUser).toHaveBeenCalledWith(mockUser.id);
       expect(mockToastrService.error).toHaveBeenCalledWith(
-        'an error occurred while adding user',
+        'an error occurred while deleting user',
         EToasterTypes.error
       );
       expect(component.userDeleted.emit).not.toHaveBeenCalled();

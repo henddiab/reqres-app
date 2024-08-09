@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
 import { map, Subscription } from 'rxjs';
 import { usersList } from '../../interfaces/usersList.interface';
@@ -21,17 +21,54 @@ export class UsersListComponent implements OnInit {
   selectedUser: any;
   // holds the selected row index
   selectedRow: number = 0;
+  // holds the page number
+  page: number = 1;
+  // loading state
+  loading: boolean = false;
   // store all active subscriptions in the component
   public subscriptions: Subscription = new Subscription();
 
   constructor(private userService: UsersService) {}
 
   /**
+   * listen to the scroll event
+   */
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    if (
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      !this.loading
+    ) {
+      this.loadMoreData();
+    }
+  }
+
+  /**
+   * load more data in the list
+   */
+  loadMoreData(): void {
+    this.loading = true;
+    this.userService.getUsersList(this.page + 1).subscribe(
+      (users: any) => {
+        this.usersList = [...this.usersList, ...users.data];
+        if (this.usersList.length >= users.total) {
+          return; // Stop loading more data if all items are loaded
+        }
+        this.page += 1;
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+      }
+    );
+  }
+
+  /**
    * get list of users
    */
   getUsersList() {
     const listUsersSubscription = this.userService
-      .getUsersList()
+      .getUsersList(this.page)
       .subscribe((res: any) => {
         this.usersList = res.data;
       });
@@ -82,26 +119,28 @@ export class UsersListComponent implements OnInit {
         if (data.actionType === 'save') {
           this.usersList = this.usersList.map((user) => {
             if (user.id === data.id) {
-              //  return { ...data.model }; >> this is the original code but there is an issue with the api data & api return
-              return {
-                id: user.id,
-                first_name: data.model.name,
-                last_name: data.model.job,
-                email: user.email,
-                avatar: user.avatar,
-              };
+              return { ...data.model };
+              // >> this is the original code but there is an issue with the api data & api return
+              // return {
+              //   id: user.id,
+              //   first_name: data.model.name,
+              //   last_name: data.model.job,
+              //   email: user.email,
+              //   avatar: user.avatar,
+              // };
             }
             return user;
           });
         } else if (data.actionType === 'add') {
-          // this.usersList.unshift(data.model); >> this is the original code but there is an issue with the api data & api return
-          this.usersList.unshift({
-            id: data.response.id,
-            first_name: data.model.name,
-            last_name: data.model.job,
-            email: 'newUser@email.com',
-            avatar: 'https://via.placeholder.com/100x100.png',
-          });
+          this.usersList.unshift(data.model);
+          // >> this is the original code but there is an issue with the api data & api return
+          // this.usersList.unshift({
+          //   id: data.response.id,
+          //   first_name: data.model.name,
+          //   last_name: data.model.job,
+          //   email: 'newUser@email.com',
+          //   avatar: 'https://via.placeholder.com/100x100.png',
+          // });
         }
       }
     });

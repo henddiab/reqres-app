@@ -91,7 +91,7 @@ export class AddEditModalComponent implements OnInit {
           );
         } else {
           this.toaster.error(
-            'an error occurred while update user',
+            'an error occurred while updating user',
             EToasterTypes.error
           );
         }
