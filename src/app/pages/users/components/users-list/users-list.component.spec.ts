@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { of, Subject } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 import { UsersListComponent } from './users-list.component';
 import { UsersService } from '../../services/users.service';
 import { usersList } from '../../interfaces/usersList.interface';
@@ -188,6 +188,65 @@ describe('UsersListComponent', () => {
       component.trackAddEditUser();
 
       expect(component.usersList).toEqual([newUser]);
+    });
+  });
+
+  describe('loadMoreData', () => {
+    it('should load more data and update the users list', () => {
+      const newUsers = {
+        data: [
+          {
+            id: '1',
+            first_name: 'User 1',
+            last_name: 'User 1',
+            email: '',
+            avatar: '',
+          },
+        ],
+        total: 10,
+      };
+      mockUserService.getUsersList.and.returnValue(of(newUsers));
+      component.page = 1;
+      component.usersList = [
+        {
+          id: '1',
+          first_name: 'User 1',
+          last_name: 'User 1',
+          email: '',
+          avatar: '',
+        },
+      ];
+
+      component.loadMoreData();
+      expect(mockUserService.getUsersList).toHaveBeenCalledWith(2);
+
+      // Simulate async call
+      fixture.whenStable().then(() => {
+        expect(component.usersList.length).toBe(2);
+        expect(component.usersList[1]).toEqual({
+          id: '1',
+          first_name: 'User 1',
+          last_name: 'User 1',
+          email: '',
+          avatar: '',
+        });
+        expect(component.page).toBe(2);
+        expect(component.loading).toBeFalse();
+      });
+    });
+
+    it('should handle errors gracefully', () => {
+      mockUserService.getUsersList.and.returnValue(
+        throwError(() => new Error('Test error'))
+      );
+      component.page = 1;
+
+      component.loadMoreData();
+
+      // Simulate async call
+      fixture.whenStable().then(() => {
+        expect(component.loading).toBeFalse();
+      });
     });
   });
 

@@ -111,7 +111,6 @@ export class AddEditModalComponent implements OnInit {
           this.userService.emitUser({
             actionType: 'add',
             model: this.model,
-            response: res,
           });
           this.toaster.success(
             'User have been added successfully',

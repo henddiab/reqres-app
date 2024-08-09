@@ -20,10 +20,17 @@
             >
               <td>
                 <div class="d-flex align-items-center">
-                  <img [src]="user.avatar" alt="" />
+                  <img
+                    [src]="user?.avatar || 'https://via.placeholder.com/150'"
+                    alt=""
+                  />
                   <div>
-                    <span>{{ user.first_name }}</span>
-                    <span class="px-1">{{ user.last_name }}</span>
+                    <span>{{
+                      user.first_name ? user.first_name : "first"
+                    }}</span>
+                    <span class="px-1">{{
+                      user.last_name ? user.last_name : "last"
+                    }}</span>
                   </div>
                 </div>
               </td>
