@@ -20,7 +20,7 @@ export class UsersListComponent implements OnInit {
   // holds the selected user data
   selectedUser: any;
   // store all active subscriptions in the component
-  private subscriptions: Subscription = new Subscription();
+  public subscriptions: Subscription = new Subscription();
 
   constructor(private userService: UsersService) {}
 
