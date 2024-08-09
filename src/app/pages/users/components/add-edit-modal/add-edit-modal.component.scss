@@ -1,0 +1,62 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.modal-dialog {
+  top: 200px;
+  .modal-content {
+    width: 363px;
+    padding-top: 3rem;
+    margin: auto;
+    border-radius: 10px;
+    .img-container {
+      background-color: $sub_heading_typography;
+      border-radius: 50%;
+      position: absolute;
+      top: -56px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 2px solid $white;
+      width: 106px;
+      height: 106px;
+      img {
+        border-radius: 50%;
+        width: 100%;
+      }
+      &.addMode {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: unset;
+          border-radius: unset;
+        }
+      }
+    }
+    .modal-body {
+      padding: 0 1rem !important;
+      p:first-child {
+        color: $sub_heading_typography;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      span {
+        font-size: 1rem;
+        color: $heading_typography;
+      }
+    }
+    .modal-footer {
+      padding-top: 0;
+      border: none !important;
+      justify-content: center;
+      button {
+        width: calc(50% - 1rem);
+      }
+      button:first-child {
+        @extend %buttonSecondary;
+      }
+      button:nth-child(2) {
+        @extend %buttonPrimary;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.header_container {
+  background-color: $header_background;
+  box-shadow: $box_shadow;
+  padding: 1rem 0;
+  &__leftSide {
+    padding-inline-start: 1rem;
+    .breadcrumb {
+      margin-bottom: 10px;
+      li {
+        font-size: 0.8rem;
+      }
+      a,
+      li.active {
+        color: $primary;
+        text-decoration: none;
+      }
+    }
+    p {
+      color: $heading_typography;
+      font-size: 2rem;
+    }
+  }
+  &__rightSide {
+    padding-inline-end: 1rem;
+    .add_user {
+      @extend %buttonPrimary;
+    }
+  }
+}

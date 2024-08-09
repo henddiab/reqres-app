@@ -1,0 +1,37 @@
+<div class="page-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-6 page-container__leftSide p-0">
+        <img src="assets/images/login-image.png" class="w-100" />
+      </div>
+      <div class="col-6 page-container__formContainer">
+        <div class="page-container__formContainer__welcomMessage">
+          <p>Welcome back !</p>
+        </div>
+        <div class="page-container__formContainer__loginMessage">
+          <p>Please login to access your <span>Spaces</span> Dashboard</p>
+        </div>
+        <!-- start login form -->
+        <form [formGroup]="form">
+          <formly-form
+            [model]="model"
+            [fields]="fields"
+            [form]="form"
+          ></formly-form>
+          <div class="page-container__formContainer__submitButtons">
+            <p><a href="#">forgot password?</a></p>
+            <button
+              type="submit"
+              class="btn btn-primary submit-button"
+              (click)="submitLogin()"
+              [disabled]="!form.valid"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+        <!-- end login form -->
+      </div>
+    </div>
+  </div>
+</div>

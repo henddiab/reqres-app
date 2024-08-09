@@ -1,0 +1,35 @@
+<!-- delete user Modal -->
+<div
+  class="modal fade"
+  [id]="modalId"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Are you sure you want to delete</p>
+        <p>
+          <span>{{ user?.first_name }}</span>
+          <span class="px-1">{{ user?.last_name }}</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- close modal button -->
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          #closeModal
+        >
+          No
+        </button>
+        <!-- open modal button -->
+        <button type="button" class="btn btn-primary" (click)="deleteUser()">
+          Yes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

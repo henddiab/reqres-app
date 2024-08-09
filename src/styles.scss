@@ -1,0 +1,11 @@
+@import "assets/scss/_variables.scss";
+@import "assets/scss/_extends.scss";
+@import "assets/scss/_forms.scss";
+@import "assets/scss/_fonts.scss";
+@import "assets/scss/_icons.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: ".SF NS Display Regular" !important;
+  font-weight: normal !important;
+}

@@ -1,0 +1,48 @@
+<!--Add/Edit User Modal -->
+<div
+  class="modal fade"
+  [id]="modalId"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div
+        [ngClass]="!user?.avatar ? 'addMode' : ''"
+        class="img-container"
+      >
+        <img [src]="user?.avatar || 'assets/images/icons8-user.svg'" alt="" />
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form">
+          <formly-form
+            [model]="model"
+            [fields]="fields"
+            [form]="form"
+          ></formly-form>
+        </form>
+      </div>
+      <!-- close modal button -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          #closeModal
+        >
+          Cancel
+        </button>
+        <!-- open modal button -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="addEditUser()"
+          [disabled]="!form.valid"
+        >
+          {{ actionType }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

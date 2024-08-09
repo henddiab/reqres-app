@@ -1,0 +1,38 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.modal-dialog {
+  top: 200px;
+  .modal-content {
+    width: 363px;
+    padding-top: 2rem;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    .modal-body {
+      padding: 0 !important;
+      p:first-child {
+        color: $sub_heading_typography;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      span {
+        font-size: 1rem;
+        color: $heading_typography;
+      }
+    }
+    .modal-footer {
+      border: none !important;
+      justify-content: center;
+      button {
+        width: calc(50% - 1rem);
+      }
+      button:first-child {
+        @extend %buttonPrimary;
+      }
+      button:nth-child(2) {
+        @extend %buttonSecondary;
+      }
+    }
+  }
+}

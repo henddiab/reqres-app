@@ -1,0 +1,18 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.navbar_container {
+  box-shadow: $box-shadow;
+  #navbarID {
+    justify-content: end;
+    a {
+      color: $heading_typography;
+      font-size: 1rem;
+      text-transform: uppercase;
+      margin-inline-end: 1rem;
+      &:last-child {
+        @extend %buttonPrimary;
+      }
+    }
+  }
+}

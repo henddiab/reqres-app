@@ -1,0 +1,47 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.user_details {
+  border-radius: 0 10px 10px 0;
+  box-shadow: $box-shadow;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: $view_container_background;
+  button.border-none {
+    border: none;
+    background-color: transparent;
+    &:hover {
+      background-color: $tr_hover;
+      border-radius: 50%;
+    }
+  }
+  img {
+    width: 127px;
+    height: 127px;
+    border-radius: 50%;
+  }
+  .userName {
+    margin: 1rem 0 1.8rem 0;
+    span {
+      color: $heading_typography;
+      font-size: 1.5rem;
+    }
+  }
+  .actionButtons {
+    display: flex;
+    width: 100%;
+    button {
+      margin: .5rem;
+      width: calc(50% - 1rem);
+    }
+    button:first-child {
+      @extend %buttonPrimary;
+      &::before {
+        color: $white;
+      }
+    }
+    button:nth-child(2) {
+      @extend %buttonSecondary;
+    }
+  }
+}

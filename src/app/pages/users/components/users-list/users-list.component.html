@@ -1,0 +1,79 @@
+<app-header [mainTitle]="'Users List'"></app-header>
+
+<div class="container">
+  <div class="row">
+    <div [ngClass]="showUser ? 'col-9 pe-0' : 'col-12'">
+      <div class="table-wrapper" [ngClass]="showUser ? 'viewMode' : ''">
+        <!-- table of users list -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">User</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usersList" (click)="openUserView(user)">
+              <td>
+                <div class="d-flex align-items-center">
+                  <img [src]="user.avatar" alt="" />
+                  <div>
+                    <span>{{ user.first_name }}</span>
+                    <span class="px-1">{{ user.last_name }}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div
+                  [ngClass]="showUser ? 'justify-content-end' : ''"
+                  class="d-flex"
+                >
+                  <button
+                    class="btn btn-secondary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editModal"
+                    (click)="getSelectedUser(user, $event)"
+                  >
+                    <i class="icon-icons8-edit"></i>
+                  </button>
+                  <button
+                    class="btn btn-secondary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteModal"
+                    (click)="getSelectedUser(user, $event)"
+                  >
+                    <i class="icon-icons8-delete"></i>
+                  </button>
+                  <button>
+                    <i class="icon-chevron-thin-right"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- view of single selected user -->
+    <div [ngClass]="showUser ? 'col-3 ps-0' : 'd-none'" *ngIf="showUser">
+      <app-view-user
+        (closeView)="closeViewMode($event)"
+        [userId]="userID"
+      ></app-view-user>
+    </div>
+  </div>
+</div>
+
+<app-add-edit-modal
+  [modalId]="'editModal'"
+  [actionType]="'Save'"
+  [user]="selectedUser"
+>
+</app-add-edit-modal>
+
+<app-delete-modal
+  [modalId]="'deleteModal'"
+  [user]="selectedUser"
+  (userDeleted)="onUserDeleted($event)"
+>
+</app-delete-modal>

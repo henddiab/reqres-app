@@ -1,0 +1,44 @@
+@import "_variables.scss";
+@import "_extends.scss";
+
+.page-container {
+  width: 50%;
+  margin: 24px auto 0;
+  border-radius: $container_radius;
+  background-color: $white;
+  box-shadow: $box_shadow;
+  &__formContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    &__welcomMessage {
+      p {
+        color: $heading_typography;
+        margin-bottom: 10px;
+        font-size: 1.5rem;
+      }
+    }
+    &__loginMessage {
+      color: $sub_heading_typography;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      span {
+        color: $primary;
+      }
+    }
+    &__submitButtons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      a {
+        font-size: 0.9rem;
+        color: $primary;
+        text-decoration: none;
+      }
+      button {
+        text-transform: uppercase;
+        @extend %buttonPrimary;
+      }
+    }
+  }
+}

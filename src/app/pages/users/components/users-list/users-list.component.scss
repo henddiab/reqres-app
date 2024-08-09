@@ -1,0 +1,117 @@
+@import "_variables.scss";
+
+.container {
+  .table-wrapper {
+    border-radius: $container_radius;
+    box-shadow: $box-shadow;
+    margin: 2rem 0;
+    padding: 1rem;
+    thead th {
+      padding: 0.5rem 2rem !important;
+      background-color: transparent !important;
+      border-bottom: none !important;
+      font-size: 0.8rem;
+      color: $sub_heading_typography;
+      &:first-child {
+        width: 85%;
+      }
+      &:nth-child(2) {
+        padding-right: 0 !important;
+      }
+    }
+    tbody {
+      tr {
+        span {
+          color: $heading_typography;
+          font-size: 1rem;
+        }
+        td {
+          padding: 1rem 2rem !important;
+          height: 85px;
+          position: relative;
+          border-bottom: 1px solid $table_border;
+          vertical-align: middle;
+          &:nth-child(2) {
+            padding-right: 0 !important;
+          }
+        }
+        td:first-child {
+          img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            margin-inline-end: 10px;
+          }
+        }
+        td:nth-child(2) {
+          button {
+            height: 32px;
+            width: 32px;
+            border: 1px solid $primary;
+            border-radius: 3px;
+            background-color: $white !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:first-child {
+              margin-inline-end: 10px;
+            }
+            &:last-child {
+              margin-inline-start: 2.5rem;
+              border: none;
+              background-color: transparent !important;
+            }
+          }
+        }
+        &:hover td {
+          background-color: $tr_hover;
+          cursor: pointer;
+          &:first-child {
+            border-radius: 10px 0 0 10px;
+          }
+          &:last-child {
+            border-radius: 0 10px 10px 0;
+          }
+        }
+        &:last-child td {
+          border: none;
+        }
+      }
+    }
+    &.viewMode {
+      border-radius: 10px 0 0 10px;
+      tbody {
+        tr {
+          &:focus-within td {
+            background-color: $primary;
+            span {
+              color: $white;
+            }
+            &:first-child {
+              img {
+                border: 1px solid $white;
+              }
+            }
+            &:nth-child(2) {
+              button {
+                &:first-child,
+                &:nth-child(2) {
+                  display: none;
+                }
+                &:last-child i::before {
+                  color: $white !important;
+                }
+              }
+            }
+            &:first-child {
+              border-radius: 10px 0 0 10px;
+            }
+            &:last-child {
+              border-radius: 0 10px 10px 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

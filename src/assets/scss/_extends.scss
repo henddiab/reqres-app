@@ -1,0 +1,19 @@
+%buttonPrimary {
+  background-color: $primary;
+  color: $white;
+  border: $no_border;
+  border-radius: $button_radius;
+  box-shadow: $box_shadow;
+  font-size: $button_size;
+  padding: $button_padding;
+}
+
+%buttonSecondary {
+  background-color: $white;
+  color: $primary;
+  border: 1px solid $primary;
+  border-radius: $button_radius;
+  box-shadow: $box_shadow;
+  font-size: $button_size;
+  padding: $button_padding;
+}

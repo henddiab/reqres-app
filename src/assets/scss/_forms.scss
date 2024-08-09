@@ -1,0 +1,21 @@
+formly-form {
+  formly-field {
+    label {
+      color: $sub_heading_typography;
+      font-size: 0.9rem;
+    }
+    input {
+      border: $field_border !important;
+      border-radius: 3px !important;
+      &::placeholder {
+        color: $sub_heading_typography !important;
+        font-size: 1rem !important;
+      }
+      &:-webkit-autofill {
+        background-color: #fff !important;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+        box-shadow: 0 0 0px 1000px #fff inset !important;
+      }
+    }
+  }
+}
