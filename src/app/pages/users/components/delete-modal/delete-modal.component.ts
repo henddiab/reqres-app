@@ -28,7 +28,7 @@ export class DeleteModalComponent implements OnInit {
   @Output() userDeleted: EventEmitter<any> = new EventEmitter<any>();
 
   // store all active subscriptions in the component
-  private subscriptions: Subscription = new Subscription();
+  public subscriptions: Subscription = new Subscription();
 
   constructor(
     private userService: UsersService,

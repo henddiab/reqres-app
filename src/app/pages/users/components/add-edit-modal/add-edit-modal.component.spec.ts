@@ -1,13 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { of, throwError } from 'rxjs';
+import { of } from 'rxjs';
 import { AddEditModalComponent } from './add-edit-modal.component';
 import { UsersService } from '../../services/users.service';
 import { ToastrService } from 'ngx-toastr';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { EToasterTypes } from 'src/app/@core/enums/toast.enum';
 
-fdescribe('AddEditModalComponent', () => {
+describe('AddEditModalComponent', () => {
   let component: AddEditModalComponent;
   let fixture: ComponentFixture<AddEditModalComponent>;
   let mockUserService: jasmine.SpyObj<UsersService>;
