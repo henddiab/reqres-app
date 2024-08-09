@@ -32,7 +32,7 @@ export class AddEditModalComponent implements OnInit {
   @Output() userAdded: EventEmitter<any> = new EventEmitter<any>();
 
   // store all active subscriptions in the component
-  private subscriptions: Subscription = new Subscription();
+  public subscriptions: Subscription = new Subscription();
 
   // represents the reactive form instance
   form: FormGroup = new FormGroup({});
@@ -80,13 +80,6 @@ export class AddEditModalComponent implements OnInit {
       .updateUser(this.user?.id, this.model)
       .subscribe((res) => {
         if (res) {
-          console.log(res);
-          
-          // this.userAdded.emit({
-          //   model: this.model,
-          //   actionType: 'save',
-          //   id: this.user?.id,
-          // });
           this.userService.emitUser({
             actionType: 'save',
             model: this.model,
@@ -115,10 +108,6 @@ export class AddEditModalComponent implements OnInit {
       .addUser(this.model)
       .subscribe((res) => {
         if (res) {
-          // this.userAdded.emit({
-          //   model: this.model,
-          //   actionType: 'add',
-          // });
           this.userService.emitUser({
             actionType: 'add',
             model: this.model,
