@@ -6,7 +6,7 @@ import {
 import { AuthService } from './auth.service';
 import { APIURL } from 'src/app/@core/services/http/api';
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
   let service: AuthService;
   let httpMock: HttpTestingController;
 
