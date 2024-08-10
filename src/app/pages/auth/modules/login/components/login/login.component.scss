@@ -3,10 +3,15 @@
 
 .page-container {
   width: 50%;
-  margin: 24px auto 0;
+  margin: 24px auto;
   border-radius: $container_radius;
   background-color: $white;
   box-shadow: $box_shadow;
+  &__leftSide {
+    img {
+      height: 100%;
+    }
+  }
   &__formContainer {
     display: flex;
     justify-content: center;
@@ -40,5 +45,23 @@
         @extend %buttonPrimary;
       }
     }
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .page-container {
+    width: 90%;
+    &__leftSide {
+      display: none;
+    }
+    &__formContainer {
+      padding: 1rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .page-container {
+    width: 90%;
   }
 }
