@@ -51,11 +51,11 @@ export class UsersListComponent implements OnInit {
     this.userService.getUsersList(this.page + 1).subscribe(
       (users: any) => {
         this.usersList = [...this.usersList, ...users.data];
+        this.page += 1;
+        this.loading = false;
         if (this.usersList.length >= users.total) {
           return; // Stop loading more data if all items are loaded
         }
-        this.page += 1;
-        this.loading = false;
       },
       (error) => {
         this.loading = false;
@@ -119,8 +119,9 @@ export class UsersListComponent implements OnInit {
         if (data.actionType === 'save') {
           this.usersList = this.usersList.map((user) => {
             if (user.id === data.id) {
-              return { ...data.model };
               // >> this is the original code but there is an issue with the api data & api return
+              return { ...data.model };
+              // >> this is static data to handle api issues
               // return {
               //   id: user.id,
               //   first_name: data.model.name,
@@ -132,8 +133,9 @@ export class UsersListComponent implements OnInit {
             return user;
           });
         } else if (data.actionType === 'add') {
-          this.usersList.unshift(data.model);
           // >> this is the original code but there is an issue with the api data & api return
+          this.usersList.unshift(data.model);
+          // >> this is static data to handle api issues
           // this.usersList.unshift({
           //   id: data.response.id,
           //   first_name: data.model.name,

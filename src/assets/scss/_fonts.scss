@@ -1,5 +1,13 @@
 @font-face {
   font-family: ".SF NS Display Regular";
+  src: url("../fonts/sfns-regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: ".SF NS Display bold";
   src: url("../fonts/sfns-display.otf");
   font-weight: normal;
   font-style: normal;
