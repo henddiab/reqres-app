@@ -1,34 +1,33 @@
 <div class="user_details">
-  <div class="row">
-    <div class="col-12">
-      <div class="d-flex justify-content-end">
-        <button (click)="closeViewMode()" class="border-none">
-          <i class="icon-close"></i>
-        </button>
-      </div>
-      <div class="d-flex flex-column align-items-center">
-        <img [src]="userData?.avatar" alt="" />
-        <div class="userName">
-          <span>{{ userData?.first_name }}</span>
-          <span class="px-1">{{ userData?.last_name }}</span>
-        </div>
-        <div class="actionButtons">
-          <button
-            class="btn btn-secondary icon-icons8-edit"
-            data-bs-toggle="modal"
-            data-bs-target="#editModal"
-          >
-            Edit
-          </button>
-          <button
-            class="btn btn-secondary icon-icons8-delete"
-            data-bs-toggle="modal"
-            data-bs-target="#deleteModal"
-          >
-            Delete
-          </button>
-        </div>
-      </div>
+  
+  <div class="d-flex justify-content-end">
+    <button (click)="closeViewMode()" class="border-none">
+      <i class="icon-close"></i>
+    </button>
+  </div>
+  <div class="d-flex flex-column align-items-center">
+    <img [src]="userData?.avatar" alt="" />
+    <div class="userName">
+      <span>{{ userData?.first_name }}</span>
+      <span class="px-1">{{ userData?.last_name }}</span>
+    </div>
+    <div class="actionButtons">
+      <button
+        class="btn btn-secondary "
+        data-bs-toggle="modal"
+        data-bs-target="#editModal"
+      >
+      <i class="icon-icons8-edit text-white"></i>
+        Edit
+      </button>
+      <button
+        class="btn btn-secondary "
+        data-bs-toggle="modal"
+        data-bs-target="#deleteModal"
+      >
+      <i class="icon-icons8-delete"></i>
+        Delete
+      </button>
     </div>
   </div>
 </div>

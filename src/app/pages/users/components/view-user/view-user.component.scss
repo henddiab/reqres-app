@@ -4,9 +4,13 @@
 .user_details {
   border-radius: 0 10px 10px 0;
   box-shadow: $box-shadow;
-  margin: 2rem 0;
+  height: 100%;
   padding: 1rem;
   background-color: $view_container_background;
+  @media screen and (max-width: 768px) {
+    border-radius: 10px;
+    
+  }
   button.border-none {
     border: none;
     background-color: transparent;
@@ -36,7 +40,7 @@
     }
     button:first-child {
       @extend %buttonPrimary;
-      &::before {
+      i::before {
         color: $white;
       }
     }

@@ -1,11 +1,15 @@
 @import "_variables.scss";
 
 .container {
+  position: relative;
   .table-wrapper {
     border-radius: $container_radius;
     box-shadow: $box-shadow;
-    margin: 2rem 0;
     padding: 1rem;
+
+    @media screen and (max-width: 768px) {
+      padding: 1rem 0.5rem;
+    }
     .loadMore {
       text-align: center;
       p {
@@ -24,6 +28,9 @@
       color: $sub_heading_typography;
       &:first-child {
         width: 85%;
+        @media screen and (max-width: 767px) {
+          width: auto;
+        }
       }
       &:nth-child(2) {
         padding-right: 0 !important;
@@ -43,6 +50,10 @@
           vertical-align: middle;
           &:nth-child(2) {
             padding-right: 0 !important;
+          }
+
+          @media screen and (max-width: 768px) {
+            padding: 1rem 0rem !important;
           }
         }
         td:first-child {
@@ -123,5 +134,14 @@
         }
       }
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .user-card-responsive {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
   }
 }

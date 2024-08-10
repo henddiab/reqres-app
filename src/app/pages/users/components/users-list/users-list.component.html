@@ -1,11 +1,11 @@
 <app-header [mainTitle]="'Users List'"></app-header>
 
-<div class="container">
+<div class="container py-5">
   <div class="row">
-    <div [ngClass]="showUser ? 'col-9 pe-0' : 'col-12'">
+    <div [ngClass]="showUser ? 'col-lg-9 col-md-8 pe-md-0' : 'col-12'">
       <div class="table-wrapper" [ngClass]="showUser ? 'viewMode' : ''">
         <!-- table of users list -->
-        <table class="table">
+        <table class="table table-responsive">
           <thead>
             <tr>
               <th scope="col">User</th>
@@ -70,7 +70,12 @@
       </div>
     </div>
     <!-- view of single selected user -->
-    <div [ngClass]="showUser ? 'col-3 ps-0' : 'd-none'" *ngIf="showUser">
+    <div
+      [ngClass]="
+        showUser ? 'col-lg-3 ps-md-0  col-md-4 user-card-responsive' : 'd-none'
+      "
+      *ngIf="showUser"
+    >
       <app-view-user
         (closeView)="closeViewMode($event)"
         [userId]="userID"
@@ -79,6 +84,8 @@
   </div>
 </div>
 
+
+<!-- add/edit modal -->
 <app-add-edit-modal
   [modalId]="'editModal'"
   [actionType]="'Save'"
@@ -86,6 +93,8 @@
 >
 </app-add-edit-modal>
 
+
+<!-- delete modal -->
 <app-delete-modal
   [modalId]="'deleteModal'"
   [user]="selectedUser"
