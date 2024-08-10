@@ -143,4 +143,13 @@ export class AddEditModalComponent implements OnInit {
     this.subscriptions.unsubscribe();
   }
   ngOnInit(): void {}
+
+  ngOnChanges(): void {
+    if (this.user) {
+      this.model = {
+        name: this.user.first_name,
+        job: this.user.last_name,
+      };
+    }
+  }
 }
